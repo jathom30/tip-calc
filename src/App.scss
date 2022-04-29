@@ -1,0 +1,22 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 2rem;
+  &__label {
+    color: lightgrey;
+    font-weight: bold;
+  }
+  &__total {
+    text-align: center;
+  }
+  &__wrapper {
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: 0 3px 16px rgba(black,.1);
+  }
+}
+
+h1, h3 {
+  margin: 0;
+}
