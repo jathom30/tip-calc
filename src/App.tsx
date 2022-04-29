@@ -13,11 +13,6 @@ const toCurrency = (val: number) => {
   return formatter.format(val);
 };
 
-const maskAsCurrency = (val: string) => {
-  const numbersOnly = val.replace(/[0-9]+/g, '')
-  return numbersOnly
-}
-
 function App() {
   const [bill, setBill] = useState<number | undefined>(undefined)
   const [perc, setPerc] = useState(.25)
@@ -28,6 +23,7 @@ function App() {
   const total = splitBill + splitTip
   return (
     <div className="App">
+      <h1 style={{color: 'grey'}}>Tip Calculator</h1>
       <div className="App__wrapper">
         <FlexBox flexDirection='column' gap=".5rem">
           <span className="App__label">Enter bill total</span>
