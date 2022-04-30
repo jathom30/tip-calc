@@ -21,7 +21,7 @@ function App() {
   const [split, setSplit] = useState(1)
 
   const splitBill = roundToHundredth((bill || 0) / split)
-  const splitTip = roundToHundredth(splitBill * perc)
+  const splitTip = splitBill * perc
   const total = splitBill + splitTip
   return (
     <div className="App">
