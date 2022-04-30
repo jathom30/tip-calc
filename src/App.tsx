@@ -13,13 +13,15 @@ const toCurrency = (val: number) => {
   return formatter.format(val);
 };
 
+const roundToHundredth = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100
+
 function App() {
   const [bill, setBill] = useState<number | undefined>(undefined)
   const [perc, setPerc] = useState(.25)
   const [split, setSplit] = useState(1)
 
-  const splitBill = (bill || 0) / split
-  const splitTip = (bill || 0) * perc / split
+  const splitBill = roundToHundredth((bill || 0) / split)
+  const splitTip = roundToHundredth(splitBill * perc)
   const total = splitBill + splitTip
   return (
     <div className="App">
