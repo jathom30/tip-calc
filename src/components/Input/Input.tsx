@@ -36,7 +36,8 @@ export const Input: React.FC<{
     let displayDollars = ''
     if (dollars.length < 3) {
       // removes starting zeros
-      displayDollars = dollars.split('').filter(char => char !== '0').join('')
+      const parsedDollars = parseInt(dollars, 10)
+      displayDollars = isNaN(parsedDollars) ? '' : parsedDollars.toString()
     } else {
       displayDollars = `${dollarsRemainder !== '' ? `${dollarsRemainder},` : ''}${splitOnThree(perfectSets)?.join(',') || ''}`
     }
