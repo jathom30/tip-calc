@@ -16,11 +16,12 @@ const toCurrency = (val: number) => {
 const roundToHundredth = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100
 
 function App() {
-  const [bill, setBill] = useState<number | undefined>(undefined)
+  const [bill, setBill] = useState('0.00')
   const [perc, setPerc] = useState(.25)
   const [split, setSplit] = useState(1)
 
-  const splitBill = roundToHundredth((bill || 0) / split)
+  const floatBill = parseFloat(bill)
+  const splitBill = roundToHundredth((floatBill || 0) / split)
   const splitTip = splitBill * perc
   const total = splitBill + splitTip
   return (
@@ -32,15 +33,7 @@ function App() {
           <Input
             name="bill"
             value={bill}
-            placeholder="Enter bill total"
-            onChange={val => {
-              if (isNaN(parseFloat(val))) {
-                setBill(undefined)
-              } else {
-                setBill(parseFloat(val))
-              }
-            }}
-            step={.01}
+            onChange={val => setBill(val)}
           />
         </FlexBox>
       </div>
